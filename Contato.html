@@ -65,13 +65,33 @@ input, textarea {
 }
 
 button {
-  background-color: #333;
+  background-color: black;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
 }	  
 
+body {
+    background-image: url('logo.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.marca-dagua {
+    background-image: url('file:///C:/Users/TRAVEL%20BRASIL%206/Documents/Bruno/Site/Clinicas-pets/img/logo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  z-index: -1;
+}  
 
 </style>
 
@@ -79,6 +99,12 @@ button {
 
 
 <body>
+
+<div class="marca-dagua"></div>
+
+  <div class="conteudo">
+    <!-- Seu conteúdo aqui -->
+  </div>
 
 <header>
   <nav class="menu">
@@ -91,7 +117,7 @@ button {
     <h1 class="cinza">Clínicas 24 horas para atendimento</h1>
 
 <section>
-  <h2>Fale conosco</h2>
+  <h2>Fala que a gente responde</h2>
   <form action="https://formsubmit.co/brunolucio_pinheiro@yahoo.com.br" method="post">
     <input type="text" name="nome" placeholder="Seu nome" required><br><br>
     <input type="email" name="email" placeholder="Seu e-mail" required><br><br>
