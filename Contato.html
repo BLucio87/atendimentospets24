@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+ <meta charset="UTF-8">
+ <title> Contato </title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+.menu {
+  background-color: white;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  padding-top: 60px; /* espaço para o menu fixo */
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.rodape {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+ margin-top: 40px;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}	  
+
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+  <nav class="menu">
+    <a href="index.html?">Início</a>
+    <a href="#">Serviços</a>
+      </nav>
+</header>
+
+<div class="container">
+    <h1 class="cinza">Clínicas 24 horas para atendimento</h1>
+
+<section>
+  <h2>Fale conosco</h2>
+  <form action="https://formsubmit.co/brunolucio_pinheiro@yahoo.com.br" method="post">
+    <input type="text" name="nome" placeholder="Seu nome" required><br><br>
+    <input type="email" name="email" placeholder="Seu e-mail" required><br><br>
+    <textarea name="mensagem" placeholder="Sua mensagem" required></textarea><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer class="rodape">
+  <p>E-mail: brunolucio_pinheiro@yahoo.com.br</p>
+  <p>Telefone: (21) 99517-9757</p>
+</footer>
+
+</body>
+</html>
