@@ -7,11 +7,49 @@
  <title> Clinicas 24 horas </title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<header>
+  <nav class="menu">
+    <a href="#">Início</a>
+    <a href="#">Serviços</a>
+    <a href="#">Contato</a>
+  </nav>
+</header>
+
  <style>
+
 ```css
+.menu {
+  background-color: white;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.rodape {
+  background-color: light-gray;
+  padding: 20px;
+  text-align: center;
+ margin-top: 40px;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  padding-top: 60px; /* espaço para o menu fixo */
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f5a0;
+  background-color: white;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -23,9 +61,9 @@ body {
   padding: 20px;
 }
 
-.cinza { color: #555; }
-.preto { color: #000; }
-.vermelho { color: #c00; }
+.cinza { color: gray; }
+.preto { color: black; }
+.vermelho { color: red; }
 
 a {
 display: inline-block;
@@ -52,7 +90,26 @@ display: inline-block;
   .gato { width: 190px; }
    .papagaio { width: 190px; }
     .filhote { width: 190px; }
-  
+
+form {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}	  
 
 </style>
 
@@ -76,6 +133,22 @@ display: inline-block;
       <img src="papagaio.jpg" alt="papagaio">
     </div>
   </div>
+
+<section>
+  <h2>Fale conosco</h2>
+  <form action="https://formsubmit.co/brunolucio_pinheiro@yahoo.com.br" method="post">
+    <input type="text" placeholder="Seu nome" required><br><br>
+    <input type="email" placeholder="Seu e-mail" required><br><br>
+    <textarea placeholder="Sua mensagem" required></textarea><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer class="rodape">
+  <p>Contato: contato@clinicas24h.com</p>
+  <p>Telefone: (21) 99517-9757</p>
+</footer>
+
 
 </body>
 </html>
