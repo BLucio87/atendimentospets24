@@ -127,6 +127,11 @@ button {
   font-size: 16px;
 }
 
+.mensagem {
+  color: darkred;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 25px;
+}
 
 </style>
 
@@ -148,6 +153,7 @@ button {
   </div>
 
 <input type="text" id="buscaUF" placeholder="Digite a UF (ex: RJ, SP, DF)">
+ <div class="mensagem" id="mensagem"></div>
 
 <div class="cards-container">
 
@@ -207,15 +213,26 @@ button {
   document.getElementById("buscaUF").addEventListener("keyup", function() {
     const uf = this.value.toUpperCase().trim(); // pega o texto digitado
     const cards = document.querySelectorAll(".clinica-card");
+    let algumVisivel = false; // flag para saber se algum card foi mostrado
 
     cards.forEach(card => {
       const cardUF = card.getAttribute("data-uf"); // pega o UF do card
       if (uf === "" || cardUF === uf) {
         card.style.display = "block"; // mostra se vazio ou igual
+          algumVisivel = true;
       } else {
         card.style.display = "none";  // esconde se diferente
       }
     });
+
+// Atualiza a mensagem
+    const mensagemDiv = document.getElementById("mensagem");
+    if (!algumVisivel && uf !== "") {
+      mensagemDiv.textContent = "NENHUM RESULTADO";
+    } else {
+      mensagemDiv.textContent = "";
+    }
+
   });
 </script>
 
