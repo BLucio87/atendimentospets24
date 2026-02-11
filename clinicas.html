@@ -22,7 +22,7 @@
   z-index: 1000;
 }
 
-.menu a: hover {
+.menu a:hover {
   color: black;
   text-decoration: underline;
      color: #555;
@@ -96,6 +96,8 @@ button {
   max-width: 600px;
   text-align: left;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 1 1 calc(50% - 40px); /* ocupa metade da linha menos o espaço */
+  max-width: 470px;           /* limite de largura */
 }
 .clinica-card h3 {
   margin-top: 0;
@@ -106,24 +108,23 @@ button {
   text-decoration: none;
 } 
 
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;   /* permite quebrar linha */
+  justify-content: center;
+  gap: 20px;         /* espaço entre os cards */
+}
+
 .destaque {
   border: 2px solid #0077cc;
   background-color: #e6f2ff;
 }
 
-.destaque-2 {
-  border: 2px solid #0077cc;
-  background-color: #e6f2ff;
-}
-
-.destaque-3 {
-  border: 2px solid #0077cc;
-  background-color: #e6f2ff;
-}
-
-.destaque-4 {
-  border: 2px solid #0077cc;
-  background-color: #e6f2ff;
+#buscaUF {
+  margin-top: 80px;   /* espaço abaixo do menu fixo */
+  max-width: 300px;   /* largura controlada */
+  padding: 10px;
+  font-size: 16px;
 }
 
 
@@ -133,25 +134,39 @@ button {
 
 <body>
 
+<header>
+  <nav class="menu">
+    <a href="index.html">Início</a>
+    <a href="Contato.html">Contato</a>
+  </nav>
+</header>
+
 <div class="marca-dagua"></div>
 
   <div class="conteudo">
     <!-- Seu conteúdo aqui -->
   </div>
 
-<div class="clinica-card destaque">
+<input type="text" id="buscaUF" placeholder="Digite a UF (ex: RJ, SP, DF)">
+
+<div class="cards-container">
+
+<div class="clinica-card destaque" data-uf="RJ">
   <h3>Hospital Veterinário Città Vet - Unid. CIttà Office Mall</h3>
   <p><strong>Endereço:</strong> Av. das Américas, 700 - Barra da Tijuca, Rio de Janeiro - RJ </p>
+  <p><strong>UF:</strong> RJ</p>
   <p><strong>CEP:</strong> 22640-100</p>
   <p><strong>Telefone:</strong> (21) 2132-8868 </p>
   <p><strong>WhatsApp:</strong> <a href="https://wa.me/552121328868" target="_blank">Chamar no wpp</a></p>
   <p><strong>Pagamento:</strong> Cartão, Pix, Dinheiro</p>
   <p><strong>Horário:</strong> 24 horas</p>
+
 </div>
 
-<div class="clinica-card destaque">
+<div class="clinica-card destaque" data-uf="RJ">
   <h3>Clinica Veterinária Apaixonados Por Quatro Patas - Unidade São Conrado/Rocinha</h3>
   <p><strong>Endereço:</strong> Estr. da Gávea, 698 - São Conrado, Rio de Janeiro - RJ </p>
+  <p><strong>UF:</strong> RJ</p>
   <p><strong>CEP:</strong> 22610-002 </p>
   <p><strong>Telefone:</strong> (21) 99814-3055 </p>
   <p><strong>WhatsApp:</strong> <a href="https://wa.me/5521998143055" target="_blank">Chamar no wpp</a></p>
@@ -160,9 +175,11 @@ button {
 
 </div>
 
-<div class="clinica-card destaque">
+
+<div class="clinica-card destaque" data-uf="SP">
   <h3>Centro Médico Veterinário Campinas | Clínica Veterinária em Campinas | Veterinários 24 Horas</h3>
   <p><strong>Endereço:</strong> R. Camargo Paes, 680 - Jardim Guanabara, Campinas - SP </p>
+  <p><strong>UF:</strong> SP</p>
   <p><strong>CEP:</strong> 13073-350 </p>
   <p><strong>Telefone:</strong> (19) 3241-7765 </p>
   <p><strong>WhatsApp:</strong> <a href="https://wa.me/551932417765" target="_blank">Chamar no wpp</a></p>
@@ -171,9 +188,10 @@ button {
 
 </div>
 
-<div class="clinica-card destaque">
+<div class="clinica-card destaque" data-uf="DF">
   <h3>Centro Animal Life 24 horas - Centro Avançado de Especialidades Veterinárias</h3>
   <p><strong>Endereço:</strong> QNJ 26 Lote 12 Lojas 01/02, Taguatinga Norte, Brasília - DF </p>
+  <p><strong>UF:</strong> DF</p>
   <p><strong>CEP:</strong> 72140-260 </p>
   <p><strong>Telefone:</strong> (61) 3542-4076 </p>
   <p><strong>WhatsApp:</strong> <a href="https://wa.me/556196972784" target="_blank">Chamar no wpp</a></p>
@@ -182,12 +200,24 @@ button {
 
 </div>
 
-<header>
-  <nav class="menu">
-    <a href="index.html">Início</a>
-    <a href="Contato.html">Contato</a>
-  </nav>
-</header>
+
+
+
+<script>
+  document.getElementById("buscaUF").addEventListener("keyup", function() {
+    const uf = this.value.toUpperCase().trim(); // pega o texto digitado
+    const cards = document.querySelectorAll(".clinica-card");
+
+    cards.forEach(card => {
+      const cardUF = card.getAttribute("data-uf"); // pega o UF do card
+      if (uf === "" || cardUF === uf) {
+        card.style.display = "block"; // mostra se vazio ou igual
+      } else {
+        card.style.display = "none";  // esconde se diferente
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
