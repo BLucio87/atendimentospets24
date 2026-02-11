@@ -125,12 +125,23 @@ button {
   max-width: 300px;   /* largura controlada */
   padding: 10px;
   font-size: 16px;
+  border: 2px solid #0077cc; /* borda azul */ 
+  border-radius: 8px; /* cantos arredondados */ 
+  outline: none; /* remove o contorno padrão */ 
+  transition: 0.3s; /* animação suave */
+}
+
+#buscaUF:focus { 
+border-color: darkred; /* muda a cor da borda */ 
+box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */ 
 }
 
 .mensagem {
-  color: darkred;
+  color: black;
   font-family: 'Segoe UI', sans-serif;
   font-size: 25px;
+  margin-top: 20px; 
+  text-align: center;
 }
 
 </style>
