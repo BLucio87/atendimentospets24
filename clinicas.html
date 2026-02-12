@@ -256,51 +256,48 @@ box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */
 
 
 <script>
-  document.getElementById("buscaUF").addEventListener("keyup", function() {
-    const uf = this.value.toUpperCase().trim(); // pega o texto digitado
-    const cards = document.querySelectorAll(".clinica-card");
-    let algumVisivel = false; // flag para saber se algum card foi mostrado
+  const buscaUF = document.getElementById("buscaUF");
+  const checkboxes = document.querySelectorAll(".filtros input[type=checkbox]");
+  const cards = document.querySelectorAll(".clinica-card");
+  const mensagemDiv = document.getElementById("mensagem");
+
+  function aplicarFiltros() {
+    const uf = buscaUF.value.toUpperCase().trim();
+    const ativos = Array.from(checkboxes)
+      .filter(c => c.checked)
+      .map(c => c.value);
+
+    let algumVisivel = false;
 
     cards.forEach(card => {
-      const cardUF = card.getAttribute("data-uf"); // pega o UF do card
-      if (uf === "" || cardUF === uf) {
-        card.style.display = "block"; // mostra se vazio ou igual
-          algumVisivel = true;
+      const cardUF = card.getAttribute("data-uf");
+      const servicos = card.getAttribute("data-servicos").split(", ");
+
+      // Verifica se o card atende ao filtro de UF
+      const atendeUF = (uf === "" || cardUF === uf);
+
+      // Verifica se o card atende aos serviços selecionados
+      const atendeServicos = ativos.every(filtro => servicos.includes(filtro));
+
+      if (atendeUF && atendeServicos) {
+        card.style.display = "block";
+        algumVisivel = true;
       } else {
-        card.style.display = "none";  // esconde se diferente
+        card.style.display = "none";
       }
     });
 
-// Atualiza a mensagem
-    const mensagemDiv = document.getElementById("mensagem");
-    if (!algumVisivel && uf !== "") {
+    // Mensagem de "nenhum resultado"
+    if (!algumVisivel && (uf !== "" || ativos.length > 0)) {
       mensagemDiv.textContent = "NENHUM RESULTADO";
     } else {
       mensagemDiv.textContent = "";
     }
+  }
 
-  });
-  </script>
-
-<script>
-  const checkboxes = document.querySelectorAll(".filtros input[type=checkbox]");
-  const cards = document.querySelectorAll(".clinica-card");
-
-  checkboxes.forEach(cb => {
-    cb.addEventListener("change", () => {
-      // pega todos os filtros ativos
-      const ativos = Array.from(checkboxes)
-        .filter(c => c.checked)
-        .map(c => c.value);
-
-      cards.forEach(card => {
-        const servicos = card.getAttribute("data-servicos").split(", ");
-        // se todos os filtros ativos estão dentro dos serviços do card
-        const atende = ativos.every(filtro => servicos.includes(filtro));
-        card.style.display = atende || ativos.length === 0 ? "block" : "none";
-      });
-    });
-  });
+  // Eventos: digitar UF ou marcar checkbox
+  buscaUF.addEventListener("keyup", aplicarFiltros);
+  checkboxes.forEach(cb => cb.addEventListener("change", aplicarFiltros));
 </script>
 
 </body>
