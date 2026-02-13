@@ -4,12 +4,38 @@
 <head>
 
  <meta charset="UTF-8">
- <title> Contato </title>
+ <title> Clinicas </title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 ```css
+@media (max-width: 600px) {
+  .barra-filtros {
+    flex-direction: column;   /* empilha busca e filtros */
+    align-items: stretch;     /* ocupa toda a largura */
+  }
+
+  .barra-filtros input[type="text"] {
+    max-width: 100%;          /* caixa de busca ocupa toda a largura */
+  }
+
+  .filtros {
+    flex-direction: column;   /* checkboxes em coluna */
+    gap: 10px;
+  }
+
+  .clinica-card {
+    max-width: 100%;          /* cards ocupam toda a largura da tela */
+    margin: 10px;
+  }
+
+  .menu {
+    flex-direction: column;   /* menu empilhado no celular */
+    gap: 10px;
+  }
+}
+
 .menu {
   background-color: white;
   color: white;
