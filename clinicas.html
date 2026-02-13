@@ -123,7 +123,7 @@ button {
 
 #buscaUF {
   margin-top: 80px;   /* espaço abaixo do menu fixo */
-  max-width: 300px;   /* largura controlada */
+  max-width: 150px;   /* largura controlada */
   padding: 10px;
   font-size: 16px;
   border: 2px solid #0077cc; /* borda azul */ 
@@ -137,6 +137,10 @@ border-color: darkred; /* muda a cor da borda */
 box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */ 
 }
 
+.busca-uf {
+  flex: 0 0 150px;           /* largura fixa da caixa de busca */
+}
+
 .mensagem {
   color: black;
   font-family: 'Segoe UI', sans-serif;
@@ -147,19 +151,39 @@ box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */
 
 .conteudo-principal {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center; /* centraliza na tela */
+  align-items: flex-start; /* alinha pelo topo */
   gap: 20px; /* espaço entre filtro e cards */
-  margin-top: 40px;
+  margin-top: 20px;
+  
+}
+
+.barra-filtros {
+  display: flex;
+  justify-content: center;   /* centraliza na tela */
+  align-items: center;       /* alinha verticalmente */
+  gap: 20px;                 /* espaço entre busca e filtros */
+  padding: 15px;
+  background-color: #f9f9f9; /* cor de fundo da barra */
+  border-bottom: 1px solid #ccc;
+}
+
+.barra-filtros input[type="text"] {
+  max-width: 150px;
+  padding: 8px;
+  border: 2px solid #0077cc;
+  border-radius: 6px;
+  outline: none;
 }
 
 .filtros {
-  width: 200px;       /* largura fixa da sidebar */
-  text-align: left;   /* alinha os textos à esquerda */
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  display: flex;
+  gap: 15px;                 /* espaço entre cada filtro */
+}
+
+.filtros label {
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .area-cards {
@@ -186,19 +210,23 @@ box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */
 </header>
 
 <main class="conteudo-principal">
-  <aside class="filtros">
-     <h3>Filtros Avançados</h3>
-     <label><input type="checkbox" value="24hrs"> Aberto Agora</label>
-     <h4>Serviços</h4>
-     <label><input type="checkbox" value="rx"> Raio-X</label>
-     <label><input type="checkbox" value="cirurgia"> Cirurgia</label>
-     <label><input type="checkbox" value="internacao"> Internação</label>
-  </aside>
 
+<div class="barra-filtros">
   <div class="area-cards">
-    <input type="text" id="buscaUF" placeholder="Digite a UF (ex: RJ, SP, DF)">
-    <div class="mensagem" id="mensagem"></div>
+    <input type="text" id="buscaUF" placeholder="UF (ex: RJ, SP, DF)">
+    </div>
 
+<div class="filtros">
+    <label><input type="checkbox" value="24hrs"> Aberto Agora</label>
+    <label><input type="checkbox" value="rx"> Raio-X</label>
+    <label><input type="checkbox" value="cirurgia"> Cirurgia</label>
+    <label><input type="checkbox" value="internacao"> Internação</label>
+  </div>
+</div>
+
+</main>
+
+<div class="mensagem" id="mensagem"></div>
 <div class="cards-container">
 
 <div class="clinica-card destaque" data-uf="RJ" data-servicos="24hrs, cirurgia">
@@ -213,7 +241,8 @@ box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */
   <p><strong>Consulta:</strong> R$ 350,00</p>
   <p><strong>Avaliação:</strong> ⭐ 4.8</p>
   <p><strong>Serviços:</strong> Cirurgia</p>
-  <button><a href="https://cittavet.com.br" target="_blank">Site</button></a>
+  <a href="https://cittavet.com.br" target="_blank">
+  <button>Site</button></a>
 
 </div>
 
@@ -251,6 +280,8 @@ box-shadow: 0 0 8px rgba(0, 119, 204, 0.5); /* brilho suave */
   <p><strong>WhatsApp:</strong> <a href="https://wa.me/556196972784" target="_blank">Chamar no wpp</a></p>
   <p><strong>Pagamento:</strong> Pix </p>
   <p><strong>Horário:</strong> 24 horas</p>
+
+</div>
 
 </div>
 
